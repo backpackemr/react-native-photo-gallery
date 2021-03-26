@@ -77,14 +77,15 @@ export default class Gallery extends Component {
           renderItem={img => this._renderImage(img)}
           keyExtractor={item => item.id}
         />
-
+        {data.length > 0 &&
         <Pagination
-          index={this.state.index}
+          index={this.state.index >= this.props.data.length ? 0 : this.state.index}
           data={data}
           initialPaginationSize={this.props.initialPaginationSize || 10}
           goTo={this.goTo}
           backgroundColor={backgroundColor}
         />
+        }
       </View>
     );
   }
